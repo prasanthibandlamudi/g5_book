@@ -31,10 +31,11 @@ public class BooksAdd extends HttpServlet{
 			String price= req.getParameter("price");
 			String categories = req.getParameter("categories");
 			String status = req.getParameter("status");
-			Part part = req.getPart("bimg");
-			String fileName = part.getSubmittedFileName();
+			String referenceId = req.getParameter("referenceId");
+//			Part part = req.getPart("bimg");
+	//		String fileName = part.getSubmittedFileName();
 			
-			BookDtls b = new BookDtls(bookname, author, price, categories, status, fileName, "admin");
+			BookDtls b = new BookDtls(bookname, author, price, categories, status, referenceId, "admin");
 			BookDAOImpl daoImpl = new BookDAOImpl(DBConnect.getConn());
 			
 			
@@ -43,10 +44,10 @@ public class BooksAdd extends HttpServlet{
 			HttpSession session = req.getSession();
 			if(f) {
 				
-				String path = getServletContext().getRealPath("")+"book";
+			//String path = getServletContext().getRealPath("")+"book";
 //				System.out.println(path);
-				File file = new File(path);
-				part.write(path + File.separator + fileName);
+			//File file = new File(path);
+			//part.write(path + File.separator + fileName);
 				
 				session.setAttribute("succMsg", "Book added successfully");
 				resp.sendRedirect("admin/add_books.jsp");

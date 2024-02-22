@@ -39,7 +39,7 @@
 				
 				<div class="card card-ho">
 					<div class="card-body text-center">
-						 <p><%= b.getRefId() %></p>
+						<p><%= b.getRefId() %></p>
 						<p><%= b.getBookName() %></p>
 						<p><%= b.getAuthor() %></p>
 						<p> Category: <%= b.getBookCategory() %> </p>

@@ -32,7 +32,7 @@ public class AddOldBook extends HttpServlet{
 			String price= req.getParameter("price");
 			String categories = "Old";
 			String status = "Active";
-			String referenceId = req.getParameter("refId");
+			String referenceId = req.getParameter("referenceId");
 //			Part part = req.getPart("bimg");
 //			String fileName = part.getSubmittedFileName()
 			
