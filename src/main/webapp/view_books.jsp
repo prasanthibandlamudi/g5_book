@@ -23,7 +23,7 @@
 		<div class="container p-3">
 			<div class="row">
 				<div class="col-md-6 p-5 border text-center bg-white">
-					<img src="book/<%= b.getRefId() %>" style="height: 170px; width: 150px"><br>
+					<!--  <img src="book/<%= b.getRefId() %>" style="height: 170px; width: 150px">--><br>
 					<h4 class="mt-3">Book Name: <span class="text-success"><%= b.getBookName() %></span></h4>
 					<h4>Author Name: <span class="text-success"> <%= b.getAuthor() %></span></h4>
 					<h4> Category: <span class="text-success"> <%= b.getBookCategory() %></span> </h4>
