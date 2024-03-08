@@ -37,6 +37,7 @@
 						  <div class="form-group">
 						    <label for="exampleInputPassword1">Password</label>
 						    <input type="password" name="password" class="form-control" id="exampleInputPassword1" required="required"  placeholder="Enter Password">
+						     <a href="forgotPassword.jsp">Forgot Password?</a>
 						  </div>
 						  <div class="text-center">
 						  	<button type="submit" class="btn btn-primary">Login</button><br>

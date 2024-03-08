@@ -55,12 +55,12 @@ public class UserDAOImpl implements UserDAO{
 				us.setEmail(rs.getString(3));
 				us.setPhno(rs.getString(4));
 				us.setPassword(rs.getString(5));
-				us.setAddress(rs.getString(6));
-				us.setLandmark(rs.getString(7));
-				us.setCity(rs.getString(8));
-				us.setState(rs.getString(9));
-				us.setPincode(rs.getString(10));
-				
+//				us.setAddress(rs.getString(6));
+//				us.setLandmark(rs.getString(7));
+//				us.setCity(rs.getString(8));
+//				us.setState(rs.getString(9));
+//				us.setPincode(rs.getString(10));
+//				
 				
 			}
 			
@@ -118,6 +118,24 @@ public class UserDAOImpl implements UserDAO{
 		
 		return f;
 	}
+	
+	public boolean changePassword(String email, String password) {
+	    boolean f = false;
+	    try {
+	        String query = "update user set password=? where email=?";
+	        PreparedStatement ps = conn.prepareStatement(query);
+	            ps.setString(1, password);
+	            ps.setString(2, email);
+	            int i = ps.executeUpdate();
+	            if (i == 1) {
+	                f = true;
+	            }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return f;
+	}
+
 
 	public boolean checkUser(String em) {
 		
