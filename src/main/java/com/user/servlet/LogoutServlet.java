@@ -15,15 +15,13 @@ import jakarta.servlet.http.HttpSession;
 public class LogoutServlet extends HttpServlet{
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		try {
-			HttpSession session = req.getSession();
+			HttpSession session = request.getSession();
 			session.removeAttribute("userObj");
-			
-			HttpSession session2 = req.getSession();
-			session2.setAttribute("succMsg", "Logout Successfully.");
-			resp.sendRedirect("login.jsp");
+			session.setAttribute("succMsg", "Logout Successfully.");
+			response.sendRedirect("index.jsp");
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -34,3 +32,4 @@ public class LogoutServlet extends HttpServlet{
 	
 	
 }
+

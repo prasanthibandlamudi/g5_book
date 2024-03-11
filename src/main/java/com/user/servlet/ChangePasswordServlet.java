@@ -29,9 +29,9 @@ public class ChangePasswordServlet extends HttpServlet {
 //	    System.out.println(email);
 //	    System.out.println(newPassword);
 
-	    UserDAOImpl daoImpl = new UserDAOImpl(DBConnect.getConn());
+	    UserDAOImpl userDAOImpl = new UserDAOImpl(DBConnect.getConn());
 	    try {
-	        boolean f = daoImpl.changePassword(email, newPassword);
+	        boolean f = userDAOImpl.changePassword(email, newPassword);
 	        if (f) {
 	            session.setAttribute("succMsg", "Password Updated Successfully.");
 	            response.sendRedirect("login.jsp");

@@ -26,7 +26,7 @@
 				. . .<i class="fa-solid fa-dolly fa-2x"></i> Cart
 			</a>
 			
-				<a href="login.jsp" class="btn btn-success ">${userObj.name}</a>
+				<a href="#" class="btn btn-success ">${userObj.name}</a>
 				 <a href="registration.jsp"
 					class="btn btn-primary ml-1" data-toggle="modal" data-target="#exampleModalCenter" ><i class="fa-solid fa-right-to-bracket"></i>  Logout</a>
 				

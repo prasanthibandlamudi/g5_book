@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.Random;
 import java.util.Properties;
 
+import jakarta.mail.Authenticator;
+import jakarta.mail.Message;
 import jakarta.mail.MessagingException;
 import jakarta.mail.PasswordAuthentication;
 import jakarta.mail.Session;
@@ -21,16 +23,15 @@ import jakarta.servlet.http.HttpSession;
 import com.DB.DBConnect;
 import com.DAO.UserDAOImpl;
 import com.entity.User;
-import com.google.protobuf.Message;
 
 @WebServlet("/resetPassword")
 public class ForgotPasswordServlet extends HttpServlet {
 
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        UserDAOImpl dao = new UserDAOImpl(DBConnect.getConn());
-        HttpSession session = req.getSession();
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//        UserDAOImpl userDAO = new UserDAOImpl(DBConnect.getConn());
+          HttpSession session = request.getSession();
         try {
-            String email = req.getParameter("email");
+            String email = request.getParameter("email");
             RequestDispatcher dispatcher = null;
             int otpvalue = 0;
             if (email != null && !email.isEmpty()) {
@@ -44,23 +45,19 @@ public class ForgotPasswordServlet extends HttpServlet {
                 sendOTP(email, otpvalue);
                
                 // Redirect to the page where user enters OTP
-                dispatcher = req.getRequestDispatcher("enterOTP.jsp");
+                dispatcher = request.getRequestDispatcher("enterOTP.jsp");
             } else {
                 // Email not provided, redirect back to forgot password page
-                dispatcher = req.getRequestDispatcher("forgotPassword.jsp");
+                dispatcher = request.getRequestDispatcher("forgotPassword.jsp");
             }
-            dispatcher.forward(req, resp);
+            dispatcher.forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();
             // Handle exception
         }
     }
 
-    private void sendOTP(String email, int otp) {
-        // Implement email sending logic here to send OTP to the user's email address
-        // You can use JavaMail API or any other email sending library
-        // Example using JavaMail API:
-       
+    private void sendOTP(String email, int otp) {       
         Properties properties = new Properties();
         properties.put("mail.smtp.host", "smtp.gmail.com");
         properties.put("mail.smtp.port", "587");

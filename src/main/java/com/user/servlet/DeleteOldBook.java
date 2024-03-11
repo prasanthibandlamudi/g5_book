@@ -16,22 +16,22 @@ import jakarta.servlet.http.HttpSession;
 public class DeleteOldBook extends HttpServlet{
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		try {
-			String emString = req.getParameter("em");
-			int id = Integer.parseInt(req.getParameter("id"));
-			BookDAOImpl daoImpl = new BookDAOImpl(DBConnect.getConn());
+			String emString = request.getParameter("em");
+			int id = Integer.parseInt(request.getParameter("id"));
+			BookDAOImpl bookDAOImpl = new BookDAOImpl(DBConnect.getConn());
 			
-			boolean f = daoImpl.oldBookDelete(emString, "Old", id);
+			boolean f = bookDAOImpl.oldBookDelete(emString, "Old", id);
 			
-			HttpSession session = req.getSession();
+			HttpSession session = request.getSession();
 			if(f) {
 				session.setAttribute("succMsg", "Old Book removed successfully.");
-				resp.sendRedirect("old_book.jsp");
+				response.sendRedirect("old_book.jsp");
 			}else {
 				session.setAttribute("failedMsg", "Something went wrong on server.");
-				resp.sendRedirect("old_book.jsp");
+				response.sendRedirect("old_book.jsp");
 			}
 			
 			

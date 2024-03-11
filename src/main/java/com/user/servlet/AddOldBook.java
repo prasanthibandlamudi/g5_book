@@ -24,28 +24,28 @@ public class AddOldBook extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		try {
-			String bookname = req.getParameter("bname");
-			String author = req.getParameter("author");
-			String price= req.getParameter("price");
+			String bookname = request.getParameter("bname");
+			String author = request.getParameter("author");
+			String price= request.getParameter("price");
 			String categories = "Old";
 			String status = "Active";
-			String referenceId = req.getParameter("referenceId");
+			String referenceId = request.getParameter("referenceId");
 //			Part part = req.getPart("bimg");
 //			String fileName = part.getSubmittedFileName()
 			
-			String nameEmail = req.getParameter("user");
+			String nameEmail = request.getParameter("user");
 			
 			BookDtls b = new BookDtls(bookname, author, price, categories, status, referenceId, nameEmail);
 //			System.out.println(b);
-			BookDAOImpl daoImpl = new BookDAOImpl(DBConnect.getConn());
+			BookDAOImpl bookDAOImpl = new BookDAOImpl(DBConnect.getConn());
 			
 			
-			boolean f = daoImpl.addBooks(b);
+			boolean f = bookDAOImpl.addBooks(b);
 			
-			HttpSession session = req.getSession();
+			HttpSession session = request.getSession();
 			if(f) {
 				
 //				String path = getServletContext().getRealPath("")+"book";
@@ -55,11 +55,11 @@ public class AddOldBook extends HttpServlet{
 				
 				
 				session.setAttribute("succMsg", "Book added successfully");
-				resp.sendRedirect("sell_book.jsp");
+				response.sendRedirect("sell_book.jsp");
 			}else {
 
 				session.setAttribute("failedMsg", "Something wrong on Server");
-				resp.sendRedirect("sell_book.jsp");
+				response.sendRedirect("sell_book.jsp");
 				
 			}
 			

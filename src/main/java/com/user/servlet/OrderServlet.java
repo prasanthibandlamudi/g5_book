@@ -24,39 +24,39 @@ import jakarta.servlet.http.HttpSession;
 public class OrderServlet extends HttpServlet{
 
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		try {
 			
-			HttpSession session = req.getSession();
+			HttpSession session = request.getSession();
 			
-			int id = Integer.parseInt(req.getParameter("id"));
+			int id = Integer.parseInt(request.getParameter("id"));
 			
-			String name = req.getParameter("username");
-			String email = req.getParameter("email");
-			String phno = req.getParameter("phno");
-			String address = req.getParameter("address");
-			String landmark = req.getParameter("landmark");
-			String city= req.getParameter("city");
-			String state = req.getParameter("state");
-			String pincode = req.getParameter("pincode");
-			String paymentType = req.getParameter("payment");
+			String name = request.getParameter("username");
+			String email = request.getParameter("email");
+			String phno = request.getParameter("phno");
+			String address = request.getParameter("address");
+			String landmark = request.getParameter("landmark");
+			String city= request.getParameter("city");
+			String state = request.getParameter("state");
+			String pincode = request.getParameter("pincode");
+			String paymentType = request.getParameter("payment");
 			
 			String fullAddress = address+", "+landmark+", "+city+", "+state+", "+pincode;
 			
-			cartDAOimpl daOimpl = new cartDAOimpl(DBConnect.getConn());
-			List<Cart> blist = daOimpl.getBookByUser(id);
+			cartDAOimpl cartDAOImpl  = new cartDAOimpl(DBConnect.getConn());
+			List<Cart> blist = cartDAOImpl .getBookByUser(id);
 //			System.out.println(name+" "+email+" "+phno+" "+ fullAddress + " "+ paymentType);
 //			System.out.println(blist);
 			
 			if(blist.isEmpty()) {
 				
 				session.setAttribute("failedMsg", "No Product In Cart.");
-				resp.sendRedirect("checkout.jsp");
+				response.sendRedirect("checkout.jsp");
 				
 			}else {
 				
-				BookOrderImpl dao2 = new BookOrderImpl(DBConnect.getConn());
+				BookOrderImpl bookOrderImpl = new BookOrderImpl(DBConnect.getConn());
 //				int i = dao2.getOrderNo();
 				Random random = new Random();
 
@@ -83,15 +83,15 @@ public class OrderServlet extends HttpServlet{
 				
 				if("noselect".equals(paymentType)) {
 					session.setAttribute("msg", "Choose Payment Method");
-					resp.sendRedirect("checkout.jsp");
+					response.sendRedirect("checkout.jsp");
 				}else {
-					Boolean fBoolean = dao2.saveOrder(orderList);
-					if(fBoolean) {
+					Boolean isOrderSaved = bookOrderImpl.saveOrder(orderList);
+					if(isOrderSaved) {
 						session.setAttribute("succMsg", "Order Successfull.");
-						resp.sendRedirect("order_success.jsp");
+						response.sendRedirect("order_success.jsp");
 					}else {
 						session.setAttribute("failedMsg", "Order Failed.");
-						resp.sendRedirect("registration.jsp");
+						response.sendRedirect("checkout.jsp");
 					}
 				}
 				

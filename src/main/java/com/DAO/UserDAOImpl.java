@@ -2,6 +2,9 @@ package com.DAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import org.mindrot.jbcrypt.BCrypt;
 
 import com.entity.User;
 
@@ -14,16 +17,16 @@ public class UserDAOImpl implements UserDAO{
 		this.conn = conn;
 	}
 
-	public boolean userRegister(User us) {
+	public boolean userRegister(User user) {
 		// TODO Auto-generated method stub
 		boolean f = false;
 		try {
 			String query = "insert into user(name,email,phno,password) values(?,?,?,?)";
 			PreparedStatement ps = conn.prepareStatement(query);
-			ps.setString(1, us.getName());
-			ps.setString(2,us.getEmail());
-			ps.setString(3, us.getPhno());
-			ps.setString(4, us.getPassword());
+			ps.setString(1, user.getName());
+			ps.setString(2,user.getEmail());
+			ps.setString(3, user.getPhno());
+			ps.setString(4, user.getPassword());
 			
 			int i = ps.executeUpdate();
 			if(i == 1) {
@@ -54,14 +57,7 @@ public class UserDAOImpl implements UserDAO{
 				us.setName(rs.getString(2));
 				us.setEmail(rs.getString(3));
 				us.setPhno(rs.getString(4));
-				us.setPassword(rs.getString(5));
-//				us.setAddress(rs.getString(6));
-//				us.setLandmark(rs.getString(7));
-//				us.setCity(rs.getString(8));
-//				us.setState(rs.getString(9));
-//				us.setPincode(rs.getString(10));
-//				
-				
+				us.setPassword(rs.getString(5));				
 			}
 			
 		}catch(Exception e) {
@@ -71,7 +67,7 @@ public class UserDAOImpl implements UserDAO{
 		return us;
 	}
 
-	public boolean checkPassword(int id,String ps) {
+	public boolean checkPassword(int id,String password) {
 
 		boolean f = false;
 		
@@ -79,7 +75,7 @@ public class UserDAOImpl implements UserDAO{
 				String sqlString = "select * from user where id=? and password=?";
 				PreparedStatement pStatement = conn.prepareStatement(sqlString);
 				pStatement.setInt(1, id);
-				pStatement.setString(2, ps);
+				pStatement.setString(2, password);
 				
 				ResultSet rs = pStatement.executeQuery();
 				while(rs.next()) {
@@ -94,18 +90,21 @@ public class UserDAOImpl implements UserDAO{
 		
 		return f;
 	}
+	public boolean checkEncryptedPassword(String password, User user ) {
+		 return BCrypt.checkpw(password, user.getPassword());
+	}
 
-	public boolean updateProfile(User us) {
+	public boolean updateProfile(User user) {
 		
 		boolean f = false;
 		try {
 //			System.out.println(us);
 			String query = "update user set name=?,email=?,phno=? where id=?";
 			PreparedStatement ps = conn.prepareStatement(query);
-			ps.setString(1, us.getName());
-			ps.setString(2,us.getEmail());
-			ps.setString(3, us.getPhno());
-			ps.setInt(4, us.getId());
+			ps.setString(1, user.getName());
+			ps.setString(2,user.getEmail());
+			ps.setString(3, user.getPhno());
+			ps.setInt(4, user.getId());
 //			ps.setInt(5, us.getId());
 			int i = ps.executeUpdate();
 			if(i == 1) {
@@ -124,7 +123,7 @@ public class UserDAOImpl implements UserDAO{
 	    try {
 	        String query = "update user set password=? where email=?";
 	        PreparedStatement ps = conn.prepareStatement(query);
-	            ps.setString(1, password);
+	            ps.setString(1,  BCrypt.hashpw(password, BCrypt.gensalt()));
 	            ps.setString(2, email);
 	            int i = ps.executeUpdate();
 	            if (i == 1) {
@@ -137,14 +136,14 @@ public class UserDAOImpl implements UserDAO{
 	}
 
 
-	public boolean checkUser(String em) {
+	public boolean checkUser(String email) {
 		
 		boolean f = true;
 		try {
 //			System.out.println(us);
 			String query = "select * from user where email=?";
 			PreparedStatement ps = conn.prepareStatement(query);
-			ps.setString(1,em);
+			ps.setString(1,email);
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
@@ -158,6 +157,34 @@ public class UserDAOImpl implements UserDAO{
 		return f;
 
 	}
+	
+	public User getUserByEmail(String email) {
+        User user = null;
+        String query = "SELECT * FROM user WHERE email = ?";
+
+        try{
+        	PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setString(1, email);
+            try {
+            	ResultSet rs = stmt.executeQuery(); 
+            
+                if (rs.next()) {
+                    user = new User();
+                    user.setId(rs.getInt("id"));
+                    user.setName(rs.getString("name"));
+                    user.setEmail(rs.getString("email"));
+                    user.setPhno(rs.getString("phno"));
+                    user.setPassword(rs.getString("password")); // Note: Password is stored hashed in the database
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return user;
+    }
 	
 	
 	

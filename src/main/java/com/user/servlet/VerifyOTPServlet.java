@@ -13,30 +13,29 @@ import jakarta.servlet.http.HttpSession;
 @WebServlet("/verifyOTP")
 public class VerifyOTPServlet extends HttpServlet {
 
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession();
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        RequestDispatcher dispatcher = null;
         
         try {
-        	RequestDispatcher dispatcher = null;
-            int otp = Integer.parseInt(req.getParameter("otp"));
+            int otp = Integer.parseInt(request.getParameter("otp"));
             Integer storedOTP = (Integer) session.getAttribute("otp");
 
             if (otp == storedOTP) {
                 // OTP is correct, allow the user to reset the password
-                req.setAttribute("email", session.getAttribute("email"));
-                dispatcher = req.getRequestDispatcher("changePassword.jsp");
+                request.setAttribute("email", session.getAttribute("email"));
+                dispatcher = request.getRequestDispatcher("changePassword.jsp");
             } else {
                 // OTP is incorrect, redirect back to the enter OTP page
-                req.setAttribute("error", "Invalid OTP, please try again.");
-                dispatcher = req.getRequestDispatcher("enterOTP.jsp");
-                
+                request.setAttribute("error", "Invalid OTP, please try again.");
+                dispatcher = request.getRequestDispatcher("enterOTP.jsp");
             }
-            dispatcher.forward(req, resp);
         } catch (NumberFormatException e) {
             // Invalid OTP format, redirect back to the enter OTP page
-            req.setAttribute("error", "Invalid OTP format, please enter a valid OTP.");
-            RequestDispatcher dispatcher = req.getRequestDispatcher("enterOTP.jsp");
-            dispatcher.forward(req, resp);
+            request.setAttribute("error", "Invalid OTP format, please enter a valid OTP.");
+            dispatcher = request.getRequestDispatcher("enterOTP.jsp");
         }
+        
+        dispatcher.forward(request, response);
     }
 }

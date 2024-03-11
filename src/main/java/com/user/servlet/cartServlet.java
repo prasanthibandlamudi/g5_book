@@ -16,17 +16,17 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 @WebServlet("/cart")
-public class cartServlet extends HttpServlet{
+public class CartServlet extends HttpServlet{
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		try {
-			int bid = Integer.parseInt(req.getParameter("bid"));
-			int uid = Integer.parseInt(req.getParameter("uid"));
+			int bid = Integer.parseInt(request.getParameter("bid"));
+			int uid = Integer.parseInt(request.getParameter("uid"));
 			
-			BookDAOImpl daoImpl = new BookDAOImpl(DBConnect.getConn());
-			BookDtls b = daoImpl.getBookById(bid);
+			BookDAOImpl bookDAOImpl = new BookDAOImpl(DBConnect.getConn());
+			BookDtls b = bookDAOImpl.getBookById(bid);
 			
 			Cart cart = new Cart();
 			cart.setBid(bid);
@@ -36,18 +36,18 @@ public class cartServlet extends HttpServlet{
 			cart.setPrice(Double.parseDouble(b.getPrice()));
 			cart.setTotalPrice(Double.parseDouble(b.getPrice()));
 			System.out.println(cart);;
-			cartDAOimpl dao2 = new cartDAOimpl(DBConnect.getConn());
-			boolean f = dao2.addcart(cart);
+			cartDAOimpl cartDAOimpl = new cartDAOimpl(DBConnect.getConn());
+			boolean f = cartDAOimpl.addcart(cart);
 			
-			HttpSession session = req.getSession();
+			HttpSession session = request.getSession();
 			
 			if(f) {
 				session.setAttribute("addCart", "Book added to cart");
-				resp.sendRedirect("all_new_book.jsp");
+				response.sendRedirect("all_new_book.jsp");
 //				System.out.print("Success added Cart");
 			}else {
 				session.setAttribute("failed", "Something Wrong Happen!");
-				resp.sendRedirect("all_new_book.jsp");
+				response.sendRedirect("all_new_book.jsp");
 //				System.out.println("Not added to cart");
 			}
 			

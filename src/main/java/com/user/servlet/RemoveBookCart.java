@@ -16,22 +16,26 @@ import jakarta.servlet.http.HttpSession;
 public class RemoveBookCart extends HttpServlet{
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		int bid = Integer.parseInt(req.getParameter("bid"));
-		int uid = Integer.parseInt(req.getParameter("uid"));
-		int cid = Integer.parseInt(req.getParameter("cid"));
-		cartDAOimpl daOimpl = new cartDAOimpl(DBConnect.getConn());
-		boolean f = daOimpl.deleteBook(cid,bid,uid);
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try {
+		int bid = Integer.parseInt(request.getParameter("bid"));
+		int uid = Integer.parseInt(request.getParameter("uid"));
+		int cid = Integer.parseInt(request.getParameter("cid"));
+		cartDAOimpl cartDAOImpl = new cartDAOimpl(DBConnect.getConn());
+		boolean f = cartDAOImpl.deleteBook(cid,bid,uid);
 		
-		HttpSession session = req.getSession();
+		HttpSession session = request.getSession();
 		if(f) {
 			session.setAttribute("succMsg", "Book removed from Cart successfully.");
-			resp.sendRedirect("checkout.jsp");
+			response.sendRedirect("checkout.jsp");
 		}else {
 			session.setAttribute("failedMsg", "Something went wrong on server.");
-			resp.sendRedirect("checkout.jsp");
+			response.sendRedirect("checkout.jsp");
 		}
 		
+	} catch (Exception e) {
+		  e.printStackTrace();
+        }
 	}
 	
 }
