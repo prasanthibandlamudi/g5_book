@@ -2,16 +2,16 @@ package com.DAO;
 
 import java.util.List;
 
-import com.entity.Book_Order;
+import com.entity.BookOrder;
 
 public interface BookOrderDAO {
 	
 //	public int getOrderNo();
 	
-	public boolean saveOrder(List<Book_Order> b);
+	public boolean saveOrder(List<BookOrder> b);
 	
-	public List<Book_Order> getBook(String email);
+	public List<BookOrder> getBook(String email);
 	
-	public List<Book_Order> getAllBook();
+	public List<BookOrder> getAllBook();
 	
 }

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import com.entity.Book_Order;
+import com.entity.BookOrder;
 
 public class BookOrderImpl implements BookOrderDAO{
 
@@ -38,7 +38,7 @@ public class BookOrderImpl implements BookOrderDAO{
 //		return i;
 //	}
 
-	public boolean saveOrder(List<Book_Order> blist) {
+	public boolean saveOrder(List<BookOrder> blist) {
 		boolean f = false;
 		
 		try {
@@ -48,7 +48,7 @@ public class BookOrderImpl implements BookOrderDAO{
 			conn.setAutoCommit(false);
 			PreparedStatement psPreparedStatement = conn.prepareStatement(sqlString);
 			// adding multiple data ** row in table at a time usign addBatch
-			for(Book_Order b: blist) {
+			for(BookOrder b: blist) {
 				psPreparedStatement.setString(1, b.getOrderId());
 				psPreparedStatement.setString(2, b.getUserName());
 				psPreparedStatement.setString(3, b.getEmail());
@@ -76,11 +76,11 @@ public class BookOrderImpl implements BookOrderDAO{
 		return f;
 	}
 
-	public List<Book_Order> getBook(String email) {
+	public List<BookOrder> getBook(String email) {
 		
-		List<Book_Order> list = new ArrayList<Book_Order>();
+		List<BookOrder> list = new ArrayList<BookOrder>();
 		
-		Book_Order o = null;
+		BookOrder o = null;
 		try {
 			
 			String sqlString = "select * from book_order where email=?";
@@ -90,7 +90,7 @@ public class BookOrderImpl implements BookOrderDAO{
 			ResultSet rSet = ps.executeQuery();
 			
 			while(rSet.next()) {
-				o = new Book_Order();
+				o = new BookOrder();
 				o.setId(rSet.getInt(1));
 				o.setOrderId(rSet.getString(2));
 				o.setUserName(rSet.getString(3));
@@ -114,11 +114,11 @@ public class BookOrderImpl implements BookOrderDAO{
 		return list;
 	}
 	
-public List<Book_Order> getAllBook() {
+public List<BookOrder> getAllBook() {
 		
-		List<Book_Order> list = new ArrayList<Book_Order>();
+		List<BookOrder> list = new ArrayList<BookOrder>();
 		
-		Book_Order o = null;
+		BookOrder o = null;
 		try {
 			
 			String sqlString = "select * from book_order";
@@ -127,7 +127,7 @@ public List<Book_Order> getAllBook() {
 			ResultSet rSet = ps.executeQuery();
 			
 			while(rSet.next()) {
-				o = new Book_Order();
+				o = new BookOrder();
 				o.setId(rSet.getInt(1));
 				o.setOrderId(rSet.getString(2));
 				o.setUserName(rSet.getString(3));

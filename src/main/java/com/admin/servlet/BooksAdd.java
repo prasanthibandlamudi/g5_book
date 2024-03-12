@@ -5,7 +5,7 @@ import java.io.IOException;
 
 import com.DAO.BookDAOImpl;
 import com.DB.DBConnect;
-import com.entity.BookDtls;
+import com.entity.BookDetails;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
@@ -35,7 +35,7 @@ public class BooksAdd extends HttpServlet{
 //			Part part = req.getPart("bimg");
 	//		String fileName = part.getSubmittedFileName();
 			
-			BookDtls b = new BookDtls(bookname, author, price, categories, status, referenceId, "admin");
+			BookDetails b = new BookDetails(bookname, author, price, categories, status, referenceId, "admin");
 			BookDAOImpl daoImpl = new BookDAOImpl(DBConnect.getConn());
 			
 			

@@ -1,11 +1,11 @@
 package com.user.servlet;
-
 import java.io.IOException;
 
 import com.DAO.BookDAOImpl;
 import com.DAO.cartDAOimpl;
 import com.DB.DBConnect;
-import com.entity.BookDtls;
+import com.entity.BookDetails;
+import com.entity.BookDetails;
 import com.entity.Cart;
 
 import jakarta.servlet.ServletException;
@@ -26,7 +26,7 @@ public class CartServlet extends HttpServlet{
 			int uid = Integer.parseInt(request.getParameter("uid"));
 			
 			BookDAOImpl bookDAOImpl = new BookDAOImpl(DBConnect.getConn());
-			BookDtls b = bookDAOImpl.getBookById(bid);
+			BookDetails b = bookDAOImpl.getBookById(bid);
 			
 			Cart cart = new Cart();
 			cart.setBid(bid);

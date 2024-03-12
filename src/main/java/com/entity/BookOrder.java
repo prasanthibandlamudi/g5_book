@@ -1,6 +1,6 @@
 package com.entity;
 
-public class Book_Order {
+public class BookOrder {
 	
 	private int id;
 	private String userName;
@@ -14,7 +14,7 @@ public class Book_Order {
 	private String price;
 	
 	
-	public Book_Order() {
+	public BookOrder() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -101,7 +101,7 @@ public class Book_Order {
 
 	@Override
 	public String toString() {
-		return "Book_Order [id=" + id + ", userName=" + userName + ", email=" + email + ", phno=" + phno + ", fulladd="
+		return "BookOrder [id=" + id + ", userName=" + userName + ", email=" + email + ", phno=" + phno + ", fulladd="
 				+ fulladd + ", paymentType=" + paymentType + ", orderId=" + orderId + ", bookname=" + bookName
 				+ ", author=" + author + ", price=" + price + "]";
 	}

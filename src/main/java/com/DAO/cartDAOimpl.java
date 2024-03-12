@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.List;
 
-import com.entity.BookDtls;
+import com.entity.BookDetails;
 import com.entity.Cart;
 
 public class cartDAOimpl implements cartDAO{

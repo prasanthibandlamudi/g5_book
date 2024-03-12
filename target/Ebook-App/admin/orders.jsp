@@ -40,9 +40,10 @@
 	  <tbody>
 	  
 	   <%
-	  BookOrderImpl dao = new BookOrderImpl(DBConnect.getConn());
-		List<Book_Order> blist =  dao.getAllBook();
-		for(Book_Order b: blist){ %>
+	  	   BookOrderImpl dao = new BookOrderImpl(DBConnect.getConn());
+	  	   		List<BookOrder> blist =  dao.getAllBook();
+	  	   		for(BookOrder b: blist){
+	  	   %>
 	  
 	    <tr>
 	      <th scope="row"><%= b.getOrderId() %></th>

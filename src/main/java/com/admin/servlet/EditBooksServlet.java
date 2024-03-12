@@ -10,7 +10,7 @@ import java.io.IOException;
 
 import com.DAO.BookDAOImpl;
 import com.DB.DBConnect;
-import com.entity.BookDtls;
+import com.entity.BookDetails;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -29,7 +29,7 @@ public class EditBooksServlet extends HttpServlet{
 			String price= req.getParameter("price");
 			String status = req.getParameter("status");
 			
-			BookDtls b = new BookDtls();
+			BookDetails b = new BookDetails();
 			b.setBookId(id);
 			b.setBookName(bookname);
 			b.setAuthor(author);

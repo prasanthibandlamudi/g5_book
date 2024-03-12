@@ -1,4 +1,4 @@
-<%@page import="com.entity.BookDtls"%>
+<%@page import="com.entity.BookDetails"%>
 <%@page import="com.DAO.BookDAOImpl"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -17,17 +17,17 @@
 		<%
 			int bid = Integer.parseInt(request.getParameter("bid"));
 			BookDAOImpl dao = new BookDAOImpl(DBConnect.getConn());
-			BookDtls b = dao.getBookById(bid);
+			BookDetails b = dao.getBookById(bid);
 			
 		%>
 		<div class="container p-3">
 			<div class="row">
 				<div class="col-md-6 p-5 border text-center bg-white">
-					<!--  <img src="book/<%= b.getRefId() %>" style="height: 170px; width: 150px">--><br>
 					<h4 class="mt-3">Book Name: <span class="text-success"><%= b.getBookName() %></span></h4>
 					<h4>Author Name: <span class="text-success"> <%= b.getAuthor() %></span></h4>
 					<h4> Category: <span class="text-success"> <%= b.getBookCategory() %></span> </h4>
-					<h4> ReferenceId: <span class="text-success"> <%= b.getRefId() %></span> </h4>
+			        <h4> ReferenceId: <span class="text-success"> <%= b.getRefId() %></span> </h4>
+					
 				</div>
 				
 				<div class="col-md-6 p-5 border text-center bg-white">

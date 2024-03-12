@@ -28,8 +28,8 @@ public class UserDAOImpl implements UserDAO{
 			ps.setString(3, user.getPhno());
 			ps.setString(4, user.getPassword());
 			
-			int i = ps.executeUpdate();
-			if(i == 1) {
+			int rowsAffected = ps.executeUpdate();
+			if(rowsAffected == 1) {
 				f = true;
 			}
 			

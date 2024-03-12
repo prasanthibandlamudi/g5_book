@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@page import="com.entity.BookDtls"%>
+    <%@page import="com.entity.BookDetails"%>
 <%@page import="com.DAO.BookDAOImpl"%>
 <%@page import="com.entity.*" %>
 <!DOCTYPE html>
@@ -20,6 +20,11 @@
 	::-webkit-scrollbar {
     display: none;
 	}
+	body {
+		background-image: url('img/book3.png');
+		background-size: cover;
+		background-repeat: no-repeat;
+	}
 </style>
 
 </head>
@@ -31,8 +36,8 @@
 <%User u = (User)session.getAttribute("userObj"); %>		
 			<%
 				BookDAOImpl dao2 = new BookDAOImpl(DBConnect.getConn());
-				List<BookDtls> list2 = dao2.getAllRecentBooks();
-				for(BookDtls b : list2){
+				List<BookDetails> list2 = dao2.getAllRecentBooks();
+				for(BookDetails b : list2){
 			%>	
 				
 			<div class="col-md-3 m-0.5 pb-2">

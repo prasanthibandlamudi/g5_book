@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.*;
 
-import com.entity.BookDtls;
+import com.entity.BookDetails;
 
 public class BookDAOImpl implements BookDAO{
 	
@@ -17,7 +17,7 @@ public class BookDAOImpl implements BookDAO{
 	}
 
 
-	public boolean addBooks(BookDtls b) {
+	public boolean addBooks(BookDetails b) {
 		boolean f = false;
 		try {
 			String queryString = "insert into book_dtls(bookname, author, price, bookCategory, status, ref_id, email) values(?,?,?,?,?,?,?)";
@@ -43,11 +43,11 @@ public class BookDAOImpl implements BookDAO{
 	}
 
 
-	public List<BookDtls> getAllBooks() {
+	public List<BookDetails> getAllBooks() {
 		
-		List<BookDtls> list  = new ArrayList<BookDtls>();
+		List<BookDetails> list  = new ArrayList<BookDetails>();
 		
-		BookDtls bookDtls = null;
+		BookDetails bookDetails = null;
 		
 		try {
 			String queryString = "select * from book_dtls";
@@ -56,16 +56,16 @@ public class BookDAOImpl implements BookDAO{
 			ResultSet rSet = pStatement.executeQuery();
 			
 			while(rSet.next()) {
-				bookDtls = new BookDtls();
-				bookDtls.setBookId(rSet.getInt(1));
-				bookDtls.setBookName(rSet.getString(2));
-				bookDtls.setAuthor(rSet.getString(3));
-				bookDtls.setPrice(rSet.getString(4));
-				bookDtls.setBookCategory(rSet.getString(5));
-				bookDtls.setStatus(rSet.getString(6));
-				bookDtls.setRefId(rSet.getString(7));
-				bookDtls.setEmail(rSet.getString(8));
-				list.add(bookDtls);
+				bookDetails = new BookDetails();
+				bookDetails.setBookId(rSet.getInt(1));
+				bookDetails.setBookName(rSet.getString(2));
+				bookDetails.setAuthor(rSet.getString(3));
+				bookDetails.setPrice(rSet.getString(4));
+				bookDetails.setBookCategory(rSet.getString(5));
+				bookDetails.setStatus(rSet.getString(6));
+				bookDetails.setRefId(rSet.getString(7));
+				bookDetails.setEmail(rSet.getString(8));
+				list.add(bookDetails);
 			}
 			
 		} catch (Exception e) {
@@ -77,8 +77,8 @@ public class BookDAOImpl implements BookDAO{
 	}
 
 
-	public BookDtls getBookById(int id) {
-		BookDtls bookDtls = null;
+	public BookDetails getBookById(int id) {
+		BookDetails bookDetails = null;
 		try {
 			String queryString = "select * from book_dtls where bookId=?";
 			PreparedStatement pStatement = conn.prepareStatement(queryString);
@@ -86,26 +86,25 @@ public class BookDAOImpl implements BookDAO{
 			ResultSet rSet = pStatement.executeQuery();
 			
 			while(rSet.next()) {
-				bookDtls = new BookDtls();
-				bookDtls.setBookId(rSet.getInt(1));
-				bookDtls.setBookName(rSet.getString(2));
-				bookDtls.setAuthor(rSet.getString(3));
-				bookDtls.setPrice(rSet.getString(4));
-				bookDtls.setBookCategory(rSet.getString(5));
-				bookDtls.setStatus(rSet.getString(6));
-				bookDtls.setRefId(rSet.getString(7));
-				bookDtls.setEmail(rSet.getString(8));
+				bookDetails = new BookDetails();
+				bookDetails.setBookId(rSet.getInt(1));
+				bookDetails.setBookName(rSet.getString(2));
+				bookDetails.setAuthor(rSet.getString(3));
+				bookDetails.setPrice(rSet.getString(4));
+				bookDetails.setBookCategory(rSet.getString(5));
+				bookDetails.setStatus(rSet.getString(6));
+				bookDetails.setRefId(rSet.getString(7));
+				bookDetails.setEmail(rSet.getString(8));
 			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		return bookDtls;
+		return bookDetails;
 	}
 
-
-	public boolean updateEditBooks(BookDtls b) {
+	public boolean updateEditBooks(BookDetails b) {
 		
 		boolean f = false;
 		
@@ -156,10 +155,10 @@ public class BookDAOImpl implements BookDAO{
 	}
 
 
-	public List<BookDtls> getNewBookDtls() {
+	public List<BookDetails> getNewBookDetails() {
 		
-		List<BookDtls> list = new ArrayList<BookDtls>();
-		BookDtls bookDtls = null;
+		List<BookDetails> list = new ArrayList<BookDetails>();
+		BookDetails bookDetails = null;
 		try {
 			String sqlString = "select * from book_dtls where bookCategory=? and status=? order by bookId DESC ";
 			PreparedStatement pStatement = conn.prepareStatement(sqlString);
@@ -169,16 +168,16 @@ public class BookDAOImpl implements BookDAO{
 			ResultSet rSet = pStatement.executeQuery();
 			int i = 1;
 			while(rSet.next() && i<=4) {
-				bookDtls = new BookDtls();
-				bookDtls.setBookId(rSet.getInt(1));
-				bookDtls.setBookName(rSet.getString(2));
-				bookDtls.setAuthor(rSet.getString(3));
-				bookDtls.setPrice(rSet.getString(4));
-				bookDtls.setBookCategory(rSet.getString(5));
-				bookDtls.setStatus(rSet.getString(6));
-				bookDtls.setRefId(rSet.getString(7));
-				bookDtls.setEmail(rSet.getString(8));
-				list.add(bookDtls);
+				bookDetails = new BookDetails();
+				bookDetails.setBookId(rSet.getInt(1));
+				bookDetails.setBookName(rSet.getString(2));
+				bookDetails.setAuthor(rSet.getString(3));
+				bookDetails.setPrice(rSet.getString(4));
+				bookDetails.setBookCategory(rSet.getString(5));
+				bookDetails.setStatus(rSet.getString(6));
+				bookDetails.setRefId(rSet.getString(7));
+				bookDetails.setEmail(rSet.getString(8));
+				list.add(bookDetails);
 				i++;
 			}
 			
@@ -192,10 +191,10 @@ public class BookDAOImpl implements BookDAO{
 	}
 
 
-	public List<BookDtls> getRecentBookDtls() {
+	public List<BookDetails> getRecentBookDtls() {
 		
-		List<BookDtls> list = new ArrayList<BookDtls>();
-		BookDtls bookDtls = null;
+		List<BookDetails> list = new ArrayList<BookDetails>();
+		BookDetails bookDetails = null;
 		try {
 			String sqlString = "select * from book_dtls where status=? order by bookId DESC ";
 			PreparedStatement pStatement = conn.prepareStatement(sqlString);
@@ -204,16 +203,16 @@ public class BookDAOImpl implements BookDAO{
 			ResultSet rSet = pStatement.executeQuery();
 			int i = 1;
 			while(rSet.next() && i<=4) {
-				bookDtls = new BookDtls();
-				bookDtls.setBookId(rSet.getInt(1));
-				bookDtls.setBookName(rSet.getString(2));
-				bookDtls.setAuthor(rSet.getString(3));
-				bookDtls.setPrice(rSet.getString(4));
-				bookDtls.setBookCategory(rSet.getString(5));
-				bookDtls.setStatus(rSet.getString(6));
-				bookDtls.setRefId(rSet.getString(7));
-				bookDtls.setEmail(rSet.getString(8));
-				list.add(bookDtls);
+				bookDetails = new BookDetails();
+				bookDetails.setBookId(rSet.getInt(1));
+				bookDetails.setBookName(rSet.getString(2));
+				bookDetails.setAuthor(rSet.getString(3));
+				bookDetails.setPrice(rSet.getString(4));
+				bookDetails.setBookCategory(rSet.getString(5));
+				bookDetails.setStatus(rSet.getString(6));
+				bookDetails.setRefId(rSet.getString(7));
+				bookDetails.setEmail(rSet.getString(8));
+				list.add(bookDetails);
 				i++;
 			}
 			
@@ -226,10 +225,10 @@ public class BookDAOImpl implements BookDAO{
 		
 	}
 	
-public List<BookDtls> getOldBookDtls() {
+public List<BookDetails> getOldBookDtls() {
 		
-		List<BookDtls> list = new ArrayList<BookDtls>();
-		BookDtls bookDtls = null;
+		List<BookDetails> list = new ArrayList<BookDetails>();
+		BookDetails bookDetails = null;
 		try {
 			String sqlString = "select * from book_dtls where bookCategory=? and status=? order by bookId DESC ";
 			PreparedStatement pStatement = conn.prepareStatement(sqlString);
@@ -239,16 +238,16 @@ public List<BookDtls> getOldBookDtls() {
 			ResultSet rSet = pStatement.executeQuery();
 			int i = 1;
 			while(rSet.next() && i<=4) {
-				bookDtls = new BookDtls();
-				bookDtls.setBookId(rSet.getInt(1));
-				bookDtls.setBookName(rSet.getString(2));
-				bookDtls.setAuthor(rSet.getString(3));
-				bookDtls.setPrice(rSet.getString(4));
-				bookDtls.setBookCategory(rSet.getString(5));
-				bookDtls.setStatus(rSet.getString(6));
-				bookDtls.setRefId(rSet.getString(7));
-				bookDtls.setEmail(rSet.getString(8));
-				list.add(bookDtls);
+				bookDetails = new BookDetails();
+				bookDetails.setBookId(rSet.getInt(1));
+				bookDetails.setBookName(rSet.getString(2));
+				bookDetails.setAuthor(rSet.getString(3));
+				bookDetails.setPrice(rSet.getString(4));
+				bookDetails.setBookCategory(rSet.getString(5));
+				bookDetails.setStatus(rSet.getString(6));
+				bookDetails.setRefId(rSet.getString(7));
+				bookDetails.setEmail(rSet.getString(8));
+				list.add(bookDetails);
 				i++;
 			}
 			
@@ -262,10 +261,10 @@ public List<BookDtls> getOldBookDtls() {
 	}
 
 
-	public List<BookDtls> getAllRecentBooks() {
+	public List<BookDetails> getAllRecentBooks() {
 
-		List<BookDtls> list = new ArrayList<BookDtls>();
-		BookDtls bookDtls = null;
+		List<BookDetails> list = new ArrayList<BookDetails>();
+		BookDetails bookDetails = null;
 		try {
 			String sqlString = "select * from book_dtls where status=? order by bookId DESC ";
 			PreparedStatement pStatement = conn.prepareStatement(sqlString);
@@ -273,16 +272,16 @@ public List<BookDtls> getOldBookDtls() {
 			
 			ResultSet rSet = pStatement.executeQuery();
 			while(rSet.next()) {
-				bookDtls = new BookDtls();
-				bookDtls.setBookId(rSet.getInt(1));
-				bookDtls.setBookName(rSet.getString(2));
-				bookDtls.setAuthor(rSet.getString(3));
-				bookDtls.setPrice(rSet.getString(4));
-				bookDtls.setBookCategory(rSet.getString(5));
-				bookDtls.setStatus(rSet.getString(6));
-				bookDtls.setRefId(rSet.getString(7));
-				bookDtls.setEmail(rSet.getString(8));
-				list.add(bookDtls);
+				bookDetails = new BookDetails();
+				bookDetails.setBookId(rSet.getInt(1));
+				bookDetails.setBookName(rSet.getString(2));
+				bookDetails.setAuthor(rSet.getString(3));
+				bookDetails.setPrice(rSet.getString(4));
+				bookDetails.setBookCategory(rSet.getString(5));
+				bookDetails.setStatus(rSet.getString(6));
+				bookDetails.setRefId(rSet.getString(7));
+				bookDetails.setEmail(rSet.getString(8));
+				list.add(bookDetails);
 			}
 			
 			
@@ -295,10 +294,10 @@ public List<BookDtls> getOldBookDtls() {
 	}
 	
 	
-	public List<BookDtls> getAllNewBooks() {
+	public List<BookDetails> getAllNewBooks() {
 
-		List<BookDtls> list = new ArrayList<BookDtls>();
-		BookDtls bookDtls = null;
+		List<BookDetails> list = new ArrayList<BookDetails>();
+		BookDetails bookDetails = null;
 		try {
 			String sqlString = "select * from book_dtls where bookCategory=? and status=? order by bookId DESC ";
 			PreparedStatement pStatement = conn.prepareStatement(sqlString);
@@ -307,16 +306,16 @@ public List<BookDtls> getOldBookDtls() {
 			
 			ResultSet rSet = pStatement.executeQuery();
 			while(rSet.next()) {
-				bookDtls = new BookDtls();
-				bookDtls.setBookId(rSet.getInt(1));
-				bookDtls.setBookName(rSet.getString(2));
-				bookDtls.setAuthor(rSet.getString(3));
-				bookDtls.setPrice(rSet.getString(4));
-				bookDtls.setBookCategory(rSet.getString(5));
-				bookDtls.setStatus(rSet.getString(6));
-				bookDtls.setRefId(rSet.getString(7));
-				bookDtls.setEmail(rSet.getString(8));
-				list.add(bookDtls);
+				bookDetails = new BookDetails();
+				bookDetails.setBookId(rSet.getInt(1));
+				bookDetails.setBookName(rSet.getString(2));
+				bookDetails.setAuthor(rSet.getString(3));
+				bookDetails.setPrice(rSet.getString(4));
+				bookDetails.setBookCategory(rSet.getString(5));
+				bookDetails.setStatus(rSet.getString(6));
+				bookDetails.setRefId(rSet.getString(7));
+				bookDetails.setEmail(rSet.getString(8));
+				list.add(bookDetails);
 			}
 			
 			
@@ -329,10 +328,10 @@ public List<BookDtls> getOldBookDtls() {
 	}
 	
 	
-	public List<BookDtls> getAllOldBooks() {
+	public List<BookDetails> getAllOldBooks() {
 		
-		List<BookDtls> list = new ArrayList<BookDtls>();
-		BookDtls bookDtls = null;
+		List<BookDetails> list = new ArrayList<BookDetails>();
+		BookDetails bookDetails = null;
 		try {
 			String sqlString = "select * from book_dtls where bookCategory=? and status=? order by bookId DESC ";
 			PreparedStatement pStatement = conn.prepareStatement(sqlString);
@@ -341,16 +340,16 @@ public List<BookDtls> getOldBookDtls() {
 			
 			ResultSet rSet = pStatement.executeQuery();
 			while(rSet.next()) {
-				bookDtls = new BookDtls();
-				bookDtls.setBookId(rSet.getInt(1));
-				bookDtls.setBookName(rSet.getString(2));
-				bookDtls.setAuthor(rSet.getString(3));
-				bookDtls.setPrice(rSet.getString(4));
-				bookDtls.setBookCategory(rSet.getString(5));
-				bookDtls.setStatus(rSet.getString(6));
-				bookDtls.setRefId(rSet.getString(7));
-				bookDtls.setEmail(rSet.getString(8));
-				list.add(bookDtls);
+				bookDetails = new BookDetails();
+				bookDetails.setBookId(rSet.getInt(1));
+				bookDetails.setBookName(rSet.getString(2));
+				bookDetails.setAuthor(rSet.getString(3));
+				bookDetails.setPrice(rSet.getString(4));
+				bookDetails.setBookCategory(rSet.getString(5));
+				bookDetails.setStatus(rSet.getString(6));
+				bookDetails.setRefId(rSet.getString(7));
+				bookDetails.setEmail(rSet.getString(8));
+				list.add(bookDetails);
 			}
 			
 			
@@ -362,10 +361,10 @@ public List<BookDtls> getOldBookDtls() {
 	}
 
 
-	public List<BookDtls> getBookByOld(String email, String cate) {
+	public List<BookDetails> getBookByOld(String email, String cate) {
 		
-		List<BookDtls> list = new ArrayList<BookDtls>();
-		BookDtls bookDtls  =null;
+		List<BookDetails> list = new ArrayList<BookDetails>();
+		BookDetails bookDetails  =null;
 		
 		try {
 			
@@ -377,16 +376,16 @@ public List<BookDtls> getOldBookDtls() {
 			ResultSet rSet = ps.executeQuery();
 			
 			while(rSet.next()) {
-				bookDtls = new BookDtls();
-				bookDtls.setBookId(rSet.getInt(1));
-				bookDtls.setBookName(rSet.getString(2));
-				bookDtls.setAuthor(rSet.getString(3));
-				bookDtls.setPrice(rSet.getString(4));
-				bookDtls.setBookCategory(rSet.getString(5));
-				bookDtls.setStatus(rSet.getString(6));
-				bookDtls.setRefId(rSet.getString(7));
-				bookDtls.setEmail(rSet.getString(8));
-				list.add(bookDtls);
+				bookDetails = new BookDetails();
+				bookDetails.setBookId(rSet.getInt(1));
+				bookDetails.setBookName(rSet.getString(2));
+				bookDetails.setAuthor(rSet.getString(3));
+				bookDetails.setPrice(rSet.getString(4));
+				bookDetails.setBookCategory(rSet.getString(5));
+				bookDetails.setStatus(rSet.getString(6));
+				bookDetails.setRefId(rSet.getString(7));
+				bookDetails.setEmail(rSet.getString(8));
+				list.add(bookDetails);
 			}
 			
 			
@@ -426,33 +425,34 @@ public List<BookDtls> getOldBookDtls() {
 	}
 
 
-	public List<BookDtls> getBookBySearch(String ch) {
+	public List<BookDetails> getBookBySearch(String ch) {
 
-		List<BookDtls> list = new ArrayList<BookDtls>();
-		BookDtls bookDtls  =null;
+		List<BookDetails> list = new ArrayList<BookDetails>();
+		BookDetails bookDetails  =null;
 		
 		try {
 //			System.out.println(ch);
-			String sqlString = "select * from book_dtls where bookname like ? or author like ? or bookCategory like ? and status=?";
+			String sqlString = "select * from book_dtls where bookname like ? or author like ? or bookCategory like ? or ref_id like ? and status=?";
 			PreparedStatement ps = conn.prepareStatement(sqlString);
 			ps.setString(1, "%"+ch+"%");
 			ps.setString(2, "%"+ch+"%");
 			ps.setString(3, "%"+ch+"%");
-			ps.setString(4, "Active");
+			ps.setString(4, "%"+ch+"%");
+			ps.setString(5, "Active");
 			
 			ResultSet rSet = ps.executeQuery();
 			
 			while(rSet.next()) {
-				bookDtls = new BookDtls();
-				bookDtls.setBookId(rSet.getInt(1));
-				bookDtls.setBookName(rSet.getString(2));
-				bookDtls.setAuthor(rSet.getString(3));
-				bookDtls.setPrice(rSet.getString(4));
-				bookDtls.setBookCategory(rSet.getString(5));
-				bookDtls.setStatus(rSet.getString(6));
-				bookDtls.setRefId(rSet.getString(7));
-				bookDtls.setEmail(rSet.getString(8));
-				list.add(bookDtls);
+				bookDetails = new BookDetails();
+				bookDetails.setBookId(rSet.getInt(1));
+				bookDetails.setBookName(rSet.getString(2));
+				bookDetails.setAuthor(rSet.getString(3));
+				bookDetails.setPrice(rSet.getString(4));
+				bookDetails.setBookCategory(rSet.getString(5));
+				bookDetails.setStatus(rSet.getString(6));
+				bookDetails.setRefId(rSet.getString(7));
+				bookDetails.setEmail(rSet.getString(8));
+				list.add(bookDetails);
 			}
 			
 			
@@ -462,6 +462,24 @@ public List<BookDtls> getOldBookDtls() {
 		
 		return list;
 		
+	}
+
+
+//	public BookDetails getBookById(int id) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+
+//
+//	public boolean updateEditBooks(BookDetails b) {
+//		// TODO Auto-generated method stub
+//		return false;
+//	}
+//
+
+	public List<BookDetails> getNewBookDtls() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

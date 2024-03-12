@@ -10,7 +10,7 @@ import javax.print.event.PrintJobListener;
 import com.DAO.BookOrderImpl;
 import com.DAO.cartDAOimpl;
 import com.DB.DBConnect;
-import com.entity.Book_Order;
+import com.entity.BookOrder;
 import com.entity.Cart;
 
 import jakarta.servlet.ServletException;
@@ -60,13 +60,13 @@ public class OrderServlet extends HttpServlet{
 //				int i = dao2.getOrderNo();
 				Random random = new Random();
 
-				Book_Order o = null;
+				BookOrder o = null;
 				
-				ArrayList <Book_Order> orderList = new ArrayList<Book_Order>();
+				ArrayList <BookOrder> orderList = new ArrayList<BookOrder>();
 				
 				for(Cart c: blist) {
 					
-					o = new Book_Order();
+					o = new BookOrder();
 					o.setOrderId("BOOK-ORDER-00"+ random.nextInt(1000));;
 					o.setUserName(name);
 					o.setEmail(email);

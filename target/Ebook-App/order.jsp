@@ -41,10 +41,11 @@
 	  <tbody>
 	  
 	  <%
-		User u = (User)session.getAttribute("userObj");
-	  BookOrderImpl dao = new BookOrderImpl(DBConnect.getConn());
-		List<Book_Order> blist =  dao.getBook(u.getEmail());
-		for(Book_Order b: blist){ %>
+	  	  User u = (User)session.getAttribute("userObj");
+	  	  	  BookOrderImpl dao = new BookOrderImpl(DBConnect.getConn());
+	  	  		List<BookOrder> blist =  dao.getBook(u.getEmail());
+	  	  		for(BookOrder b: blist){
+	  	  %>
 			
 		<tr>
 	      <th scope="row"><%= b.getOrderId() %></th>

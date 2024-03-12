@@ -1,6 +1,6 @@
 package com.entity;
 
-public class BookDtls {
+public class BookDetails {
 	private int bookId;
 	private String bookName;
 	private String author;
@@ -9,11 +9,11 @@ public class BookDtls {
 	private String status;
 	private String refId;
 	private String email;
-	public BookDtls() {
+	public BookDetails() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public BookDtls(String bookName, String author, String price, String bookCategory, String status,
+	public BookDetails(String bookName, String author, String price, String bookCategory, String status,
 			String refId, String email) {
 		super();
 		this.bookName = bookName;

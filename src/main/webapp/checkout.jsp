@@ -13,7 +13,8 @@
 <%@page import="com.entity.*" %>
 <%@page import="java.util.*" %>
 </head>
-<body style="background-color: #f0f1f2;">
+<!-- <body style="background-color: #f0f1f2;"> -->
+<body style="background-image: url('img/checkout1.jpg'); background-size: cover;">
 <%@include file="all_component/navbar.jsp" %>
 
 <c:if test="${empty userObj}">
@@ -49,7 +50,7 @@
 	<div class="row p-2">
 		<div class="col-md-6">
 			
-			<div class="card bg-white">
+			<div class="card" style="background-color: rgba(0, 0, 0, 0.5);">
 				<div class="card-body">
 					<h3 class="text-center text-success">Your Selected Item</h3>
 					

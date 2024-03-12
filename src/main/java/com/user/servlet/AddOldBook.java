@@ -5,7 +5,7 @@ import java.io.IOException;
 
 import com.DAO.BookDAOImpl;
 import com.DB.DBConnect;
-import com.entity.BookDtls;
+import com.entity.BookDetails;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
@@ -38,7 +38,7 @@ public class AddOldBook extends HttpServlet{
 			
 			String nameEmail = request.getParameter("user");
 			
-			BookDtls b = new BookDtls(bookname, author, price, categories, status, referenceId, nameEmail);
+			BookDetails b = new BookDetails(bookname, author, price, categories, status, referenceId, nameEmail);
 //			System.out.println(b);
 			BookDAOImpl bookDAOImpl = new BookDAOImpl(DBConnect.getConn());
 			

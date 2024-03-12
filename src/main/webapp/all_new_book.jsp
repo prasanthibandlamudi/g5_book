@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page isELIgnored="false"%>
     <%@page import="com.DAO.BookDAOImpl"%>
-<%@page import="com.entity.BookDtls"%>
+<%@page import="com.entity.BookDetails"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,6 +21,11 @@
 	}
 	::-webkit-scrollbar {
     display: none;
+	}
+	body {
+		background-image: url('img/book3.png');
+		background-size: cover;
+		background-repeat: no-repeat;
 	}
 	
 	#toast {
@@ -99,8 +104,8 @@
 			
 			<%
 				BookDAOImpl dao = new BookDAOImpl(DBConnect.getConn());
-				List<BookDtls> list = dao.getAllNewBooks();
-				for(BookDtls b : list){
+				List<BookDetails> list = dao.getAllNewBooks();
+				for(BookDetails b : list){
 			%>	
 			<div class="col-md-3 m-0.5 pb-2">
 				

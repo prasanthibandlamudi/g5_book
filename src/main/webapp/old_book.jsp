@@ -53,9 +53,9 @@
     <%
     	String email = u.getEmail();
     	BookDAOImpl dao = new BookDAOImpl(DBConnect.getConn());
-    	List<BookDtls> list =  dao.getBookByOld(email, "Old");
+    	List<BookDetails> list =  dao.getBookByOld(email, "Old");
     	
-    	for(BookDtls b: list){
+    	for(BookDetails b: list){
     %>
     <tr>
       <td><%= b.getBookName() %></td>

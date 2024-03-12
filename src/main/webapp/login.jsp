@@ -9,13 +9,21 @@
 <title>Ebook: Login</title>
 <%@include file="all_component/allCss.jsp" %>
 </head>
-<body style="background-color: #f0f1f2;">
+<!-- <body style="background-color: #f0f1f2;"> -->
+<style>
+    body {
+        background-image: url('img/login.jpg'); /* Adjust the image URL */
+        background-size: cover;
+        background-position: center;
+    }
+</style>
+
 <%@include file="all_component/navbar.jsp" %>
 
-	<div class="container p-3">
+	<div class="container p-3" style="margin-right: -100px;" >
 		<div class="row">
 			<div class="col-md-4 offset-md-4">
-				<div class="card">
+				<div class="card" style="background-color: rgba(173, 216, 230, 0.5);">
 					<div class="card-body">
 						<h4 class="text-center">Login</h4>
 						

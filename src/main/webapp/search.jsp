@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@page import="com.entity.BookDtls"%>
+    <%@page import="com.entity.BookDetails"%>
 <%@page import="com.DAO.BookDAOImpl"%>
 <!DOCTYPE html>
 <html>
@@ -33,8 +33,8 @@
 			<%
 			 String ch = request.getParameter("ch");
 				BookDAOImpl dao2 = new BookDAOImpl(DBConnect.getConn());
-				List<BookDtls> list2 = dao2.getBookBySearch(ch);
-				for(BookDtls b : list2){
+				List<BookDetails> list2 = dao2.getBookBySearch(ch);
+				for(BookDetails b : list2){
 			%>	
 				
 			<div class="col-md-3 m-0.5 pb-2">

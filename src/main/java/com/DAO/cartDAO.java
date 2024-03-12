@@ -1,7 +1,7 @@
 package com.DAO;
 
 import java.util.*;
-import com.entity.BookDtls;
+import com.entity.BookDetails;
 import com.entity.Cart;
 
 public interface cartDAO {

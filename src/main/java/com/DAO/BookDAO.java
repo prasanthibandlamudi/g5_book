@@ -2,34 +2,34 @@ package com.DAO;
 
 import java.util.List;
 
-import com.entity.BookDtls;
+import com.entity.BookDetails;
 
 public interface BookDAO {
-	public boolean addBooks(BookDtls b);
+	public boolean addBooks(BookDetails b);
 	
-	public List<BookDtls> getAllBooks();
+	public List<BookDetails> getAllBooks();
 	
-	public BookDtls getBookById(int id);
+	public BookDetails getBookById(int id);
 	
-	public boolean updateEditBooks(BookDtls b);
+	public boolean updateEditBooks(BookDetails b);
 	
 	public boolean deleteteBooks(int id);
 	
-	public List<BookDtls> getNewBookDtls();
+	public List<BookDetails> getNewBookDtls();
 	
-	public List<BookDtls> getRecentBookDtls();
+	public List<BookDetails> getRecentBookDtls();
 	
-	public List<BookDtls> getOldBookDtls();
+	public List<BookDetails> getOldBookDtls();
 	
-	public List<BookDtls> getAllRecentBooks();
+	public List<BookDetails> getAllRecentBooks();
 	
-	public List<BookDtls> getAllNewBooks();
+	public List<BookDetails> getAllNewBooks();
 	
-	public List<BookDtls> getAllOldBooks();
+	public List<BookDetails> getAllOldBooks();
 	
-	public List<BookDtls> getBookByOld(String email, String cate);
+	public List<BookDetails> getBookByOld(String email, String cate);
 	
 	public boolean oldBookDelete(String email, String cate, int id);
 	
-	public List<BookDtls> getBookBySearch(String ch);
+	public List<BookDetails> getBookBySearch(String ch);
 }
