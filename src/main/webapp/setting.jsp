@@ -23,7 +23,9 @@
 	}
 </style>
 </head>
-<body style="background-color: #f7f7f7;">
+<!-- <body style="background-color: #f7f7f7;"> -->
+<body style="background-image: url('img/setting.jpg'); background-size: cover; background-position: center; background-attachment: fixed; background-color: #f7f7f7;">
+		<%-- <%@include file="all_component/navbar.jsp" %> --%>
 		<%@include file="all_component/navbar.jsp" %>
 		
 <c:if test="${empty userObj}">
@@ -32,7 +34,7 @@
 
 <%User u = (User)session.getAttribute("userObj"); %>	
 	
-	<div class="container">
+	<%-- <div class="container">
 	
 			<h3 class="text-center m-2"><%= u.getName() %></h3>
 		<div class="row p-2">
@@ -75,9 +77,8 @@
 						</div>
 					</div>
 				</a>
-			</div>
-			
-	<%--		<div class="col-md-4 mt-3">
+			</div> --%>
+			<!-- <div class="col-md-4 mt-3">
 				<a href="user_address.jsp">
 					<div class="card">
 						<div class="card-body text-center">
@@ -89,9 +90,8 @@
 						</div>
 					</div>
 				</a>
-			</div>
-		--%>	
-			<div class="col-md-6 mt-3">
+			</div> -->
+		<!-- <div class="col-md-4">
 				<a href="order.jsp">
 					<div class="card">
 						<div class="card-body text-center">
@@ -103,9 +103,9 @@
 						</div>
 					</div>
 				</a>
-			</div>
+			</div> -->
 			
-			<div class="col-md-6 mt-3">
+			<!-- <div class="col-md-6 mt-3">
 				<a href="helpline.jsp">
 					<div class="card">
 						<div class="card-body text-center">
@@ -117,13 +117,79 @@
 						</div>
 					</div>
 				</a>
-			</div>
+			</div> -->
+			<div class="container">
+<%--     <h2 class="text-center m-2"><%= u.getName() %></h2> --%>
+<%-- <h1 style="text-align: center; margin: 20px;"><%= u.getName() %></h1> --%>
+ <h1 style="text-align: center; margin: 20px; color: blue;"><%= u.getName() %></h1>
+<%-- <h1 style="text-align: center; margin: 20px; color: #00008B;"><%= u.getName() %></h1> --%>
+
+
+
+    <div class="row p-2">
+        <div class="col-md-6">
+            <a href="sell_book.jsp">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <div class="text-primary">
+                            <i class="fa-solid fa-book-open fa-3x"></i>
+                        </div>
+                        <h3>Sell Old Book</h3>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-md-6">
+            <a href="old_book.jsp">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <div class="text-primary">
+                            <i class="fa-solid fa-book-open fa-3x"></i>
+                        </div>
+                        <h3>Old Book</h3>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="row p-2">
+        <div class="col-md-6">
+            <a href="Edit_profile.jsp">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <div class="text-primary">
+                            <i class="fa-solid fa-pen-to-square fa-3x"></i>
+                        </div>
+                        <h3>Edit Profile</h3>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-md-6 ">
+            <a href="order.jsp">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <div class="text-danger">
+                            <i class="fa-solid fa-box-open fa-3x"></i>
+                        </div>
+                        <h3>My Orders</h3>
+              <!--           <p>Track your order</p> -->
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
 			
 			
+		
 		</div>
 	
 	</div>
 	
 		<%@include file="all_component/footer.jsp" %>
 </body>
-</html>
+</html> 

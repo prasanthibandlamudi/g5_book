@@ -14,7 +14,8 @@
 <%@page import="com.entity.*" %>
 
 </head>
-<body style="background-color: #f7f7f7;">
+<!-- <body style="background-color: #f7f7f7;"> -->
+<body style="background-image: url('img/edit.jpg'); background-size: cover;">
 <%@include file="all_component/navbar.jsp" %>
 		
 <c:if test="${empty userObj}">
@@ -22,11 +23,11 @@
 </c:if>
 
 <%User u = (User)session.getAttribute("userObj"); %>
-	<div class="container">
+	<div class="container mt-3">
 	
 		<div class="row">
-			<div class="col-md-4 offset-md-4">
-				<div class="card">
+			<div class="col-md-4 offset-md-5">
+				<div class="card" style="background-color: rgba(173, 216, 230, 0.5);">
 					<div class="card-body">
 						<h5 class="text-center text-primary p-1">Edit Profile</h5>
 						

@@ -40,16 +40,24 @@ public class CartServlet extends HttpServlet{
 			boolean f = cartDAOimpl.addcart(cart);
 			
 			HttpSession session = request.getSession();
-			
 			if(f) {
-				session.setAttribute("addCart", "Book added to cart");
-				response.sendRedirect("all_new_book.jsp");
-//				System.out.print("Success added Cart");
-			}else {
-				session.setAttribute("failed", "Something Wrong Happen!");
-				response.sendRedirect("all_new_book.jsp");
-//				System.out.println("Not added to cart");
+			    session.setAttribute("addCart", "Book added to cart");
+			    response.sendRedirect(request.getParameter("returnTo"));
+			} else {
+			    session.setAttribute("failed", "Something Wrong Happen!");
+			    response.sendRedirect(request.getParameter("returnTo"));
 			}
+
+			
+//			if(f) {
+//				session.setAttribute("addCart", "Book added to cart");
+//				response.sendRedirect("all_new_book.jsp");
+////				System.out.print("Success added Cart");
+//			}else {
+//				session.setAttribute("failed", "Something Wrong Happen!");
+//				response.sendRedirect("all_new_book.jsp");
+////				System.out.println("Not added to cart");
+//			}
 			
 		}catch (Exception e) {
 			e.printStackTrace();

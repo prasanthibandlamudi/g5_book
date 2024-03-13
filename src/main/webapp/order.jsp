@@ -15,7 +15,7 @@
 <%@page import="com.entity.*" %>
 
 </head>
-<body style="background-color: #f7f7f7;">
+<body style="background-image: url('img/order8.jpg'); background-size: cover;">
 <%@include file="all_component/navbar.jsp" %>
 		
 <c:if test="${empty userObj}">

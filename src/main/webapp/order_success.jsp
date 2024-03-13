@@ -39,8 +39,8 @@
 </style>
 
 </head>
-<body style="background-color: #f7f7f7;">
-
+<!-- <body style="background-color: #f7f7f7;"> -->
+<body style="background-image: url('img/order10.jpg'); background-size: cover;">
 <%User u = (User)session.getAttribute("userObj"); %>
 
 	<%@include file="all_component/navbar.jsp" %>
@@ -48,9 +48,11 @@
 	<div class="container text-center mt-3">
 	
 		<i class="fas fa-check-circle fa-5x text-success"></i>
-		<h1>Thank You</h1>
-		<h2>Your Order Successfully</h2>
-		<h5>With in 7 Days Your Project will be Delivered in Your Address.</h5>
+		<!-- <h1>Thank You</h1> -->
+		<!-- <h2>Your order is successfully placed</h2> -->
+		<!-- <h5>Your product will be delivered to your address within a week</h5> -->
+		 <h1 style="margin-top: 175px;">Thank You</h1>
+   <!--  <h1 style="margin-bottom: 40px;">Your product will be delivered to your address within a week</h1> -->
 		<a href="index.jsp" class="btn btn-primary mt-3">Home</a>
 		<a href="order.jsp" class="btn btn-danger mt-3">View Order</a>
 		

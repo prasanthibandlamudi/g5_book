@@ -111,8 +111,8 @@
     width: 300px;
     /* //height: 500px; */
     position: absolute; /* Added */
-    top: 0; /* Added */
-    left: 50%; /* Added */
+    top: 1%; /* Added */
+    left: 49%; /* Added */
     transform: translateX(-50%); /* Added */
 	}
 

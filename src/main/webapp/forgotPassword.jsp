@@ -74,15 +74,17 @@
     color: #fff;
 }
 .container {
-    background-color: rgba(135, 206, 255, 0.7);/*t transparency as needed */
+    background-color: rgba(135, 206, 235, 0.7);/*t transparency as needed */
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     text-align: center;
     position: absolute;
-    top: 10%;/*ition container at the top */
+    top: 5%;/*ition container at the top */
     left: 50%;
     transform: translateX(-50%);
+    width: 40%; /* Adjust the width as needed */
+    height: 150px; /* Adjust the height as needed */
 }
 h2 {
     margin-top: 0;

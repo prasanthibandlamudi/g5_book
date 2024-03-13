@@ -50,7 +50,8 @@
 	<div class="row p-2">
 		<div class="col-md-6">
 			
-			<div class="card" style="background-color: rgba(0, 0, 0, 0.5);">
+			<!-- <div class="card" style="background-color: rgba(0, 0, 0, 0.5);"> -->
+				<div class="card"  style="background-color: rgba(211, 211, 211, 0.7);">
 				<div class="card-body">
 					<h3 class="text-center text-success">Your Selected Item</h3>
 					
@@ -102,7 +103,7 @@
 		
 		<div class="col-md-6">
 			
-			<div class="card">
+			<div class="card"  style="background-color: rgba(211, 211, 211, 0.7);">
 				<div class="card-body">
 				<h3 class="text-center text-success">Your Details For Order</h3>
 					<form action="order" method="POST">

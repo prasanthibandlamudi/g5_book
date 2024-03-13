@@ -14,7 +14,8 @@
 <%@page import="com.entity.*" %>
 
 </head>
-<body style="background-color: #f7f7f7;">
+<!-- <body style="background-color: #f7f7f7;"> -->
+<body style="background-image: url('img/address1.jpg'); background-size: cover;">
 <%@include file="all_component/navbar.jsp" %>
 		
 <c:if test="${empty userObj}">
@@ -22,10 +23,10 @@
 </c:if>
 
 
-	<div class="container">
+	<div class="container" >
 		<div class="row p-3">
 			<div class="col-md-6 offset-md-3">
-				<div class="card">
+				<div class="card" style="background-color: rgba(173, 216, 230, 0.5);">
 					<div class="card-body">
 						<h3 class="text-center text-success">Add Address</h3>
 					

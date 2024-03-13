@@ -120,13 +120,18 @@
 						
 						<% if(u == null){ %>
 							<a href="login.jsp" class="btn btn-danger btn-sm mr-1"><i class="fa-solid fa-cart-plus fa-2xs"></i> Add Cart</a>
-						<%}else{ %>
-							<a href="cart?bid=<%=b.getBookId()%>&&uid=<%=u.getId()%>" class="btn btn-danger btn-sm mr-1"><i class="fa-solid fa-cart-plus fa-2xs"></i> Add Cart</a>
-						<%} %>
-						
+						<%}else{ 
+							 String returnTo = request.getParameter("returnTo");
+							    if (returnTo == null || returnTo.isEmpty()) {
+							        returnTo = request.getRequestURI(); // Default return page if not specified
+							    }
+							    %>
+							<a href="cart?bid=<%=b.getBookId()%>&uid=<%=u.getId()%>&returnTo=<%=returnTo%>" class="btn btn-danger btn-sm mr-1"><i class="fa-solid fa-cart-plus fa-2xs"></i> Add Cart</a>	
 							<a href="view_books.jsp?bid=<%= b.getBookId()%>" class="btn btn-success btn-sm mr-1">View Details</a>
 							<a href="" class="btn btn-danger btn-sm"><i class="fa-solid fa-indian-rupee-sign"></i> <%= b.getPrice() %></a>
 						</div>
+					<%	}
+			%>	
 					</div>
 				</div>
 					

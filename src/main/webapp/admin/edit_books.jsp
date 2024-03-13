@@ -1,4 +1,4 @@
-<%@page import="com.entity.BookDtls"%>
+<%@page import="com.entity.BookDetails"%>
 <%@page import="com.DB.DBConnect"%>
 <%@page import="com.DAO.BookDAOImpl"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -30,7 +30,7 @@
 						<%
 						int id = Integer.parseInt(request.getParameter("id"));
 						BookDAOImpl dao = new BookDAOImpl(DBConnect.getConn());
-						BookDtls b = dao.getBookById(id);
+						BookDetails b = dao.getBookById(id);
 						%>
 						
 						<form action="../editBooks" method="post">
