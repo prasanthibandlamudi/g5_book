@@ -63,6 +63,20 @@
 
 		<c:remove var="inactiveBook" scope="session" />
 	</c:if>
+	<c:if test="${not empty failedMsg}">
+		<div id="toast" class="alert alert-danger text-center">${failedMsg}</div>
+		<script type="text/javascript">
+        showToast();
+        function showToast() {
+            $('#toast').addClass("display");
+            setTimeout(() => {
+                $("#toast").removeClass("display");
+            }, 5000); // Display for 5 seconds
+        }
+    </script>
+
+		<c:remove var="failedMsg" scope="session" />
+	</c:if>
 
 	<div class="container">
 
