@@ -103,6 +103,22 @@ public class BookDAOImpl implements BookDAO{
 		
 		return bookDetails;
 	}
+	public String getBookStatus(int bookId) {
+	    String status = "";
+	    try {
+	        String sqlString = "select status from book_dtls where bookId=?";
+	        PreparedStatement pStatement = conn.prepareStatement(sqlString);
+	        pStatement.setInt(1, bookId);
+	        ResultSet rs = pStatement.executeQuery();
+	        if (rs.next()) {
+	            status = rs.getString("status");
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return status;
+	}
+
 
 	public boolean updateEditBooks(BookDetails b) {
 		

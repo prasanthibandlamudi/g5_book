@@ -26,12 +26,12 @@ public class BooksAdd extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		try {
+			String referenceId = req.getParameter("referenceId");
 			String bookname = req.getParameter("bname");
 			String author = req.getParameter("author");
 			String price= req.getParameter("price");
 			String categories = req.getParameter("categories");
 			String status = req.getParameter("status");
-			String referenceId = req.getParameter("referenceId");
 //			Part part = req.getPart("bimg");
 	//		String fileName = part.getSubmittedFileName();
 			

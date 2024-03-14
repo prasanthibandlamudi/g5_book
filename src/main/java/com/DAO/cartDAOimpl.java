@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.util.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 import com.entity.BookDetails;
@@ -79,6 +80,16 @@ public class cartDAOimpl implements cartDAO{
 		return list;
 	}
 
+	public void removeAllCartItems(int userId) {
+        try {
+            String query = "DELETE FROM cart WHERE uid = ?";
+            PreparedStatement preparedStatement = conn.prepareStatement(query);
+            preparedStatement.setInt(1, userId);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+	}
 
 	public boolean deleteBook(int cid ,int bid, int uid) {
 		boolean f = false;

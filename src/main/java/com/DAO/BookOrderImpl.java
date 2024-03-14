@@ -39,41 +39,64 @@ public class BookOrderImpl implements BookOrderDAO{
 //	}
 
 	public boolean saveOrder(List<BookOrder> blist) {
-		boolean f = false;
-		
-		try {
-			
-			String sqlString = "insert into book_order(order_id, user_name, email, address, phno, book_name, author, price, payment) values(?,?,?,?,?,?,?,?,?)";
-			
-			conn.setAutoCommit(false);
-			PreparedStatement psPreparedStatement = conn.prepareStatement(sqlString);
-			// adding multiple data ** row in table at a time usign addBatch
-			for(BookOrder b: blist) {
-				psPreparedStatement.setString(1, b.getOrderId());
-				psPreparedStatement.setString(2, b.getUserName());
-				psPreparedStatement.setString(3, b.getEmail());
-				psPreparedStatement.setString(4, b.getFulladd());
-				psPreparedStatement.setString(5, b.getPhno());
-				psPreparedStatement.setString(6, b.getBookname());
-				psPreparedStatement.setString(7, b.getAuthor());
-				psPreparedStatement.setString(8, b.getPrice());
-				psPreparedStatement.setString(9, b.getPaymentType());
-				psPreparedStatement.addBatch();
-				
-			}
-			
-			int[] count = psPreparedStatement.executeBatch();
-			conn.commit();
-			f = true;
-			conn.setAutoCommit(true);
-			
-			
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
-		
-		return f;
+	    boolean f = false;
+
+	    try {
+
+	        String sqlString = "insert into book_order(order_id, user_name, email, address, phno, book_name, author, price, payment) values(?,?,?,?,?,?,?,?,?)";
+
+	        conn.setAutoCommit(false);
+	        PreparedStatement psPreparedStatement = conn.prepareStatement(sqlString);
+	        // adding multiple data ** row in table at a time using addBatch
+	        for (BookOrder b : blist) {
+	            // Check if the book is in active status
+	            if (isBookActive(b.getBookname())) {
+	                psPreparedStatement.setString(1, b.getOrderId());
+	                psPreparedStatement.setString(2, b.getUserName());
+	                psPreparedStatement.setString(3, b.getEmail());
+	                psPreparedStatement.setString(4, b.getFulladd());
+	                psPreparedStatement.setString(5, b.getPhno());
+	                psPreparedStatement.setString(6, b.getBookname());
+	                psPreparedStatement.setString(7, b.getAuthor());
+	                psPreparedStatement.setString(8, b.getPrice());
+	                psPreparedStatement.setString(9, b.getPaymentType());
+	                psPreparedStatement.addBatch();
+	            }
+//	            } else {
+//	                System.out.println("Book is not active: " + b.getBookname());
+//	            }
+
+	        }
+
+	        int[] count = psPreparedStatement.executeBatch();
+	        conn.commit();
+	        f = true;
+	        conn.setAutoCommit(true);
+
+
+	    } catch (Exception e) {
+	        // TODO: handle exception
+	        e.printStackTrace();
+	    }
+
+	    return f;
+	}
+
+	private boolean isBookActive(String bookName) {
+	    boolean isActive = false;
+	    try {
+	        String sql = "select status from book_dtls where bookname = ?";
+	        PreparedStatement ps = conn.prepareStatement(sql);
+	        ps.setString(1, bookName);
+	        ResultSet rs = ps.executeQuery();
+	        if (rs.next()) {
+	            String status = rs.getString("status");
+	            isActive = status.equals("Active");
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return isActive;
 	}
 
 	public List<BookOrder> getBook(String email) {

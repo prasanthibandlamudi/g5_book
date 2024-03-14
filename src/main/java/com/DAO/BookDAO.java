@@ -32,4 +32,5 @@ public interface BookDAO {
 	public boolean oldBookDelete(String email, String cate, int id);
 	
 	public List<BookDetails> getBookBySearch(String ch);
+	public String getBookStatus(int bid);
 }
