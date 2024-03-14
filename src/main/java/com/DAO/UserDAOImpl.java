@@ -185,7 +185,36 @@ public class UserDAOImpl implements UserDAO{
 
         return user;
     }
+
+	public void updateToken(String email, String token) {
+	    try {
+	        String query = "UPDATE user SET token=? WHERE email=?";
+	        PreparedStatement ps = conn.prepareStatement(query);
+	        ps.setString(1, token);
+	        ps.setString(2, email);
+	        ps.executeUpdate();
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	}
+
+	public String getToken(String email) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
+	public void removeToken(String email) {
+	    try {
+	        String query = "UPDATE user SET token=NULL WHERE email=?";
+	        PreparedStatement ps = conn.prepareStatement(query);
+	        ps.setString(1, email);
+	        ps.executeUpdate();
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	}
+
 	
 	
 }

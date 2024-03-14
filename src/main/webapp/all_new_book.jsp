@@ -75,6 +75,10 @@
 <body>
 
 <%User u = (User)session.getAttribute("userObj"); %>
+<c:if test="${empty userObj}">
+	<c:redirect url="login.jsp" />
+</c:if>
+
 
 <c:if test="${not empty addCart}">
 	

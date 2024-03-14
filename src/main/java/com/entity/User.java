@@ -11,6 +11,7 @@ public class User {
 	private String city;
 	private String state;
 	private String pincode;
+	private String token;
 	public int getId() {
 		return id;
 	}
@@ -75,6 +76,13 @@ public class User {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	 public String getToken() {
+	        return token;
+	    }
+
+	    public void setToken(String token) {
+	        this.token = token;
+	    }
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", phno=" + phno

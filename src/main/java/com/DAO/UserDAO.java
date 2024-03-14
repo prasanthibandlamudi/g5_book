@@ -14,4 +14,12 @@ public interface UserDAO {
 	public boolean checkUser(String em);
 	
 	public boolean changePassword(String email, String password);
+    
+    public String getToken(String email); // New method for retrieving token
+
+	void updateToken(String email, String token);
+	
+	public void removeToken(String email);
+
+
 }
