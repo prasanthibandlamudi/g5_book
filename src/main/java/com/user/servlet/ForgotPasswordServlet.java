@@ -66,13 +66,13 @@ public class ForgotPasswordServlet extends HttpServlet {
 
         Session session = Session.getDefaultInstance(properties, new jakarta.mail.Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("prasanthib144@gmail.com", "yssl ciob fclj lbof");
+                return new PasswordAuthentication("bookolx05@gmail.com", "jcdp fkms knnv npbe");
             }
         });
 
         try {
             MimeMessage message = new MimeMessage(session);
-            message.setFrom(new InternetAddress("prasanthib144@gmail.com"));
+            message.setFrom(new InternetAddress("bookolx05@gmail.com"));
             message.setRecipients(jakarta.mail.internet.MimeMessage.RecipientType.TO, InternetAddress.parse(email));
             message.setSubject("Your OTP for password reset");
             message.setText("Your OTP is: " + otp);

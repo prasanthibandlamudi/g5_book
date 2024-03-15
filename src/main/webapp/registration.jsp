@@ -72,12 +72,17 @@
                             <label for="exampleInputPassword1">Password</label>
                             <input type="password" name="password" required="required" minlength="5" class="form-control" id="exampleInputPassword1" placeholder="Enter Password">
                           </div>
-						  <div class="form-check">
-						    <input type="checkbox" name="check" class="form-check-input" id="exampleCheck1">
-						    <label class="form-check-label" for="exampleCheck1">Agree Terms & Condition</label>
-						  </div>
-						  
-						  <div class="text-center">
+							<div class="form-check">
+								<!--  <input type="checkbox" name="check" class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Agree Terms & Condition</label> -->
+								<label class="form-check-label" for="exampleCheck1"> <input
+									type="checkbox" id="exampleCheck1"></label>
+								<!-- Link to terms.jsp -->
+								<a href="terms.jsp">Agree Terms & Conditions</a>
+							</div>
+
+
+							<div class="text-center">
 						  	<button type="submit" class="btn btn-primary">Register</button>
 						  </div>
 						</form>
