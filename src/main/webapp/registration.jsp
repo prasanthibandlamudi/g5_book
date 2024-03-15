@@ -76,7 +76,7 @@
 								<!--  <input type="checkbox" name="check" class="form-check-input" id="exampleCheck1">
                                 <label class="form-check-label" for="exampleCheck1">Agree Terms & Condition</label> -->
 								<label class="form-check-label" for="exampleCheck1"> <input
-									type="checkbox" id="exampleCheck1"></label>
+									type="checkbox" id="exampleCheck1" name="check"></label>
 								<!-- Link to terms.jsp -->
 								<a href="terms.jsp">Agree Terms & Conditions</a>
 							</div>

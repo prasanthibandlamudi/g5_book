@@ -33,7 +33,7 @@ public class RegisterServlet extends HttpServlet{
 			String password = request.getParameter("password");
 			String encryptedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
 			String check= request.getParameter("check");
-			
+			boolean agreedToTerms = check != null;
 //			System.out.print(name+" "+email+" "+phno+" "+password+" "+check);
 			User user = new User();
 			user.setName(name);
@@ -44,7 +44,7 @@ public class RegisterServlet extends HttpServlet{
 			
 			HttpSession session = request.getSession();
 			
-			if(check != null) {
+			if(agreedToTerms) {
 			
 				UserDAOImpl userDAO = new UserDAOImpl(DBConnect.getConn());
 				
