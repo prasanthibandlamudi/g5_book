@@ -39,14 +39,39 @@
 						    <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
 						    <small id="emailHelp" required="required"  class="form-text text-muted">We'll never share your email with anyone else.</small>
 						  </div>
-						  <div class="form-group">
-						    <label for="exampleInputEmail1">Phone Number</label>
-						    <input type="number" name="phno" required="required"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Phone Number">
-						  </div>
-						  <div class="form-group">
-						    <label for="exampleInputPassword1">Password</label>
-						    <input type="password" name="password" required="required"  class="form-control" id="exampleInputPassword1" placeholder="Enter Password">
-						  </div>
+						 <div class="form-group">
+                            <label for="exampleInputEmail1">Phone Number</label>
+                            <input type="tel" pattern="[0-9]{10}" name="phno" required="required" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Phone Number (10 digits)">
+                            <small id="phoneHelp" class="form-text text-muted">Please enter a 10-digit phone number.</small>
+                            </div>
+
+							<script>
+								function validatePhoneNumber() {
+									var phoneNumber = document
+											.getElementById("exampleInputEmail1").value;
+									if (phoneNumber.length !== 10
+											|| isNaN(phoneNumber)) {
+										alert("Please enter a valid 10-digit phone number.");
+										return false;
+									}
+									return true;
+								}
+
+								document
+										.querySelector("form")
+										.addEventListener(
+												"submit",
+												function(event) {
+													if (!validatePhoneNumber()) {
+														event.preventDefault();
+													}
+												});
+							</script>
+
+							<div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" name="password" required="required" minlength="5" class="form-control" id="exampleInputPassword1" placeholder="Enter Password">
+                          </div>
 						  <div class="form-check">
 						    <input type="checkbox" name="check" class="form-check-input" id="exampleCheck1">
 						    <label class="form-check-label" for="exampleCheck1">Agree Terms & Condition</label>

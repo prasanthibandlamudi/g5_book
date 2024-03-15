@@ -12,6 +12,13 @@
 <meta charset="ISO-8859-1">
 <title>Admin: All Books</title>
 <%@include file='allCss.jsp' %>
+<style>
+  body {
+    background-image: url('../img/book3.jpg');
+    background-size: cover;
+}
+
+</style>
 </head>
 <body>
 <%@include file="navbar.jsp" %>
@@ -52,13 +59,13 @@
 	  	for(BookDetails b: list){%>
 	  		
 	  		 <tr>
-		      <td><%= b.getBookId() %></td>
-		      <td><%= b.getBookName() %></td>
-		      <td><%= b.getRefId() %></td>
-		      <td><%= b.getAuthor() %></td>
-		      <td><%= b.getPrice() %></td>
-		      <td><%= b.getBookCategory() %></td>
-		      <td><%= b.getStatus() %></td>
+		      <td><strong><%= b.getBookId() %></strong></td>
+		      <td><strong><%= b.getBookName() %></strong></td>
+		      <td><strong><%= b.getRefId() %></strong></td>
+		      <td><strong><%= b.getAuthor() %></strong></td>
+		      <td><strong><%= b.getPrice() %></strong></td>
+		      <td><strong><%= b.getBookCategory() %></strong></td>
+		      <td><strong><%= b.getStatus() %></strong></td>
 		      <td>
 		      	<a href="edit_books.jsp?id=<%= b.getBookId() %>" class="btn btn-sm btn-primary"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
 		      	<a href="../delete?id=<%= b.getBookId() %>" class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i> Delete</a>
@@ -72,8 +79,16 @@
 	  </tbody>
 	</table>
 
-<div class="container-fluid fixed-bottom">
+<%-- <div class="container-fluid fixed-bottom">
 	<%@include file="footer.jsp" %>
+</div> --%>
+<%-- <div class="container-fluid fixed-bottom"">
+    <%@include file="footer.jsp" %>
+</div> --%>
+<div class="container-fluid" style="margin-top: 15px;">
+	<%-- <%@include file="footer.jsp" %> --%>
+  <%-- 	<%@include file="../all_component/footer.jsp" %> --%>
 </div>
+
 </body>
 </html>

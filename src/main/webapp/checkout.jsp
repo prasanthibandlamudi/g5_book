@@ -188,7 +188,7 @@
 										name="state" class="form-control" id="inputEmail4" required>
 								</div>
 								<div class="form-group col-md-6">
-									<label for="inputPassword4">Pin code</label> <input type="text"
+									<label for="inputPassword4">Pin code</label> <input type="number"
 										name="pincode" class="form-control" id="inputPassword4"
 										required>
 								</div>

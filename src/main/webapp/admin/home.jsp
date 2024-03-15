@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -16,6 +17,11 @@
 		text-decoration: none;
 		color: black;
 	}
+	body {
+    background-image: url('../img/home2.jpg');
+    background-size: cover; /* Cover the entire viewport */
+    background-position: center; /* Center the image */
+	}
 </style>
 
 </head>
@@ -31,7 +37,7 @@
 		
 			<div class="col-md-3">
 				<a href="add_books.jsp">
-				<div class="card">
+				<div class="card" style="background-color: rgba(173, 216, 230, 0.5);">
 					<div class="card-body text-center">
 						<i class="fa-sharp fa-regular fa-square-plus fa-3x text-primary"></i><br/>
 						<h4>Add Books</h4>
@@ -43,7 +49,7 @@
 		
 			<div class="col-md-3">
 				<a href="all_books.jsp">
-				<div class="card">
+				<div class="card" style="background-color: rgba(173, 216, 230, 0.5);">
 					<div class="card-body text-center">
 						<i class="fa-solid fa-book-open fa-3x" style="color: #ff0000;"></i><br/>
 						<h4>All Books</h4>
@@ -55,7 +61,7 @@
 					
 			<div class="col-md-3">
 				<a href="orders.jsp">
-				<div class="card">
+				<div class="card" style="background-color: rgba(173, 216, 230, 0.5);">
 					<div class="card-body text-center">
 						<i class="fa-solid fa-box-open fa-3x text-warning"></i><br/>
 						<h4>Orders</h4>
@@ -67,7 +73,7 @@
 					
 			<div class="col-md-3">
 			<a href="#" data-toggle="modal" data-target="#exampleModalCenter">
-				<div class="card">
+				<div class="card" style="background-color: rgba(173, 216, 230, 0.5);">
 					<div class="card-body text-center">
 						<i class="fa-solid fa-right-from-bracket fa-3x text-primary"></i><br/>
 						<h4>logout</h4>
@@ -107,9 +113,13 @@
 </div>
 
 <!-- logout end -->
-	
+<%-- 	
 <div class="container-fluid fixed-bottom">
 	<%@include file="footer.jsp" %>
+</div> --%>
+<div class="container-fluid" style="margin-top: 15px;">
+	<%-- <%@include file="footer.jsp" %> --%>
+	<%@include file="../all_component/footer.jsp" %>
 </div>
 </body>
 </html>
