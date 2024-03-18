@@ -35,6 +35,5 @@
 			<attribute name="owner.project.facets" value="jst.web"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/g5/ebookproject05/book/src/main/webapp/WEB-INF/lib/jakarta.servlet.jsp.jstl-2.0.0.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
